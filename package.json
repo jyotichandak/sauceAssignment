@@ -1,0 +1,23 @@
+{
+  "name": "sauceassignment",
+  "version": "1.0.0",
+  "description": "use command npm init playwright@latest",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jyotichandak/sauceAssignment.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jyotichandak/sauceAssignment/issues"
+  },
+  "homepage": "https://github.com/jyotichandak/sauceAssignment#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.14"
+  }
+}
