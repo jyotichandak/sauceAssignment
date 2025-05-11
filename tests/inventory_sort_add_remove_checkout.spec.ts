@@ -24,7 +24,7 @@ test.beforeAll(async ({ browser }) => {
 });
 
 
-test('verify inventory items are sorted from Z to A @sortza', async ({ }) => {
+test('verify inventory items are sorted from Z to A', async ({ }) => {
   //sort items from Z to A
   await inventoryPage.productSort.selectOption({ label: 'Name (Z to A)' });
   //verify items are sorted from Z to A
@@ -40,7 +40,7 @@ test('verify inventory items are sorted by price from high to low', async ({ }) 
 });
 
 
-test('verify the cart badge count @badge11', async ({ }) => {
+test('verify the cart badge count', async ({ }) => {
   //add 3 items to cart and save the itemText to an array
   for (let i = 0; i < 3; i++) {
     //add item to cart        

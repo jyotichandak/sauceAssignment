@@ -6,3 +6,4 @@ node_modules/
 /blob-report/
 /playwright/.cache/
 /tests-example/
+inventory_independent_tests_examples.spec.ts

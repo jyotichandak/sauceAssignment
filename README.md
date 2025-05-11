@@ -35,13 +35,18 @@ Follow these steps to set up the project locally:
      ```javascript
      use: {
        headless: false,
-       screenshot: 'on',
+       screenshot: 'only-on-failure',
        expect: {
          toHaveScreenshot: { maxDiffPixelRatio: 0.01, threshold: 0.1 },
        },
-       snapshotPathTemplate: '.test/snaps/{projectName}/{testFilePath}/{arg}{ext}',
+      
      }
      ```
+
+  5. Install axe-core:
+   ```bash
+   npm install @axe-core/playwright
+   ```   
 
 ## Running Tests
 
