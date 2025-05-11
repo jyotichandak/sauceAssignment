@@ -23,6 +23,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
+  /*tell Playwright to store our snapshots in a custom directory */
+  snapshotPathTemplate: '.test/snaps/{projectName}/{testFilePath}/{arg}{ext}',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
@@ -31,26 +33,38 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     headless: false,
+    screenshot: 'only-on-failure',
+  },
+
+  expect:
+  {
+    toHaveScreenshot: { maxDiffPixelRatio: 0.01, threshold: 0.1 }
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: {
+        ...devices['Desktop Chrome'],
+        viewport: {
+          height: 1032,
+          width: 1920
+        }
+      }
     },
 
-  /*  {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
-
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
-
-    /* Test against mobile viewports. */
+    /*  {
+        name: 'firefox',
+        use: { ...devices['Desktop Firefox'] },
+      }, */
+  
+      {
+        name: 'webkit',
+        use: { ...devices['Desktop Safari'] },
+      },
+  
+      /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
     //   use: { ...devices['Pixel 5'] },

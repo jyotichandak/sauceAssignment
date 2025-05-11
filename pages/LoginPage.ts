@@ -24,6 +24,8 @@ export class LoginPage {
    
     async validateLoginForStdUser()
     {
+          //navigate to the application
+        await this.page.goto('https://www.saucedemo.com/');
         await this.uname.fill('standard_user');
         await this.pwd.fill('secret_sauce')  
         await  this.login.click();             
