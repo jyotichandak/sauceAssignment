@@ -1,49 +1,82 @@
-# Install nodeJS
+```markdown
+# Sauce Assignment
 
-# create a new reporsitory in github
-use git init to initialize the local folder as git repo
-set git config user.name
-use git clone to clone the https value of the reporsitory from github
+## Prerequisites
 
-# Install playwright 
-For cloned repo -
-use command npm init playwright@latest and click enter for all default options listed/answers
+Before setting up and running the tests, ensure you have the following installed:
 
-# create folder for pages under repository for pom
-create .ts file for each page
-add / define locators and methods
+1. **Node.js**: Install the latest LTS version of Node.js from [Node.js official website](https://nodejs.org/).
+2. **Git**: Install Git from [Git official website](https://git-scm.com/).
+3. **Playwright**: This project uses Playwright for end-to-end testing. It will be installed as part of the setup process.
+4. **Supported Browsers**: Ensure you have the latest versions of Chromium, Firefox, and WebKit installed. Playwright will handle browser dependencies automatically.
 
-# Create spec file and add scripts 
-create .spec.ts file under tests folder
-add tests to it 
-- by default tests from spec file will run parallelly using mutiple workers
-- if tests are depedent ,use 'serial' mode in spec file and only one worker will be used to      execute them
-    test.describe.configure({ mode: 'serial' });
-    
+## Setup Instructions
 
-# make test run headed and take screenshots only on failures
-update "use" xection of config file with below attributes -
-headless: false,
-screenshot : 'only-on-failure',
+Follow these steps to set up the project locally:
 
-# For visual testing snapshots
-- Add an "expect" section for maxPixelDifferenceRatio in config file
-  expect :
-  {
-    toHaveScreenshot: { maxDiffPixelRatio: 0.01,threshold: 0.1 } 
-  }
-  
- - define custom path for snapshots in config file  
-    snapshotPathTemplate: '.test/snaps/{projectName}/{testFilePath}/{arg}{ext}',
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd sauceAssignment
+   ```
 
-# Run all the tests using below command
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Initialize Playwright:
+   ```bash
+   npx playwright install
+   ```
+
+4. Configure the project:
+   - Update the `playwright.config.ts` file to include the following settings:
+     ```javascript
+     use: {
+       headless: false,
+       screenshot: 'on',
+       expect: {
+         toHaveScreenshot: { maxDiffPixelRatio: 0.01, threshold: 0.1 },
+       },
+       snapshotPathTemplate: '.test/snaps/{projectName}/{testFilePath}/{arg}{ext}',
+     }
+     ```
+
+## Running Tests
+
+### Run All Tests
+To execute all tests, use the following command:
+```bash
 npx playwright test
+```
 
-# Run tests f
-- From a specific file use below command
-    npx playwright test inventory_sort_add_remove_checkout.spec.ts
-    npx playwright test saucedemo_visual_testing.spec.ts
+### Run Specific Tests
+To run a specific test file, use:
+```bash
+npx playwright test inventory_1.spec.ts
+```
 
-- For running all tests
-    npx playwright test
+### Test Execution Logs and Reports
+1. After running the tests, a detailed HTML report will be generated in the `playwright-report/` directory.
+2. To view the report, open the `playwright-report/index.html` file in your browser:
+   ```bash
+   npx playwright show-report
+   ```
 
+3. Screenshots of failed tests will be saved in the `screenshots/` directory.
+4. Test results, including snapshots and logs, will be stored in the `test-results/` directory.
+
+## Additional Notes
+
+- Tests are configured to run in parallel by default. If tests are dependent, use the `serial` mode in the spec file:
+  ```javascript
+  test.describe.configure({ mode: 'serial' });
+  ```
+
+- For visual testing, snapshots are stored in the default directory under `tests/`. 
+
+- For any issues or questions, refer to the Playwright documentation: [Playwright Docs](https://playwright.dev/).
+
+Happy Testing!
+```  
