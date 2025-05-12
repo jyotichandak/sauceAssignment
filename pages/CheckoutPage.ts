@@ -11,19 +11,27 @@ export class CheckoutPage {
     continueShopping: Locator;
     checkOut: Locator;
     continue: Locator;
+    finish: Locator;
     overviewItemTotal: Locator;
     overviewTotalPrice: Locator;
+    checkoutStep1URL: string;
+    checkoutStep2URL: string;
+    checkoutCompleteURL: string;
 
 
     //constructor
     constructor(page: Page) {
         this.page = page;
+        this.checkoutStep1URL = 'https://www.saucedemo.com/checkout-step-one.html';
+        this.checkoutStep2URL = 'https://www.saucedemo.com/checkout-step-two.html';
+        this.checkoutCompleteURL = 'https://www.saucedemo.com/checkout-complete.html';
         this.cartItemName = page.locator(".inventory_item_name");
         this.cartItemPrice = page.locator(".inventory_item_price");
         this.cartItemDesc = page.locator('.inventory_item_desc')
         this.continueShopping = page.locator("#continue-shopping");
         this.checkOut = page.locator("#checkout");
         this.continue = page.getByRole('button', { name: 'Continue' });
+        this.finish= page.locator("#finish");
         this.overviewItemTotal = page.locator(".summary_subtotal_label");
         this.overviewTotalPrice = page.locator(".summary_total_label");
 

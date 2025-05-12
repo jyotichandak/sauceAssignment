@@ -37,6 +37,7 @@ export default defineConfig({
     trace: 'on-first-retry',
     headless: false,
     screenshot: 'only-on-failure',
+   
   },
 
   expect:
@@ -54,6 +55,7 @@ export default defineConfig({
           height: 1032,
           width: 1920
         }
+     
       }
     },
 

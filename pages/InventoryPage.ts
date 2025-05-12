@@ -14,11 +14,15 @@ export class InventoryPage {
     shoppingCartBadge: Locator;
     inventoryItem: Locator;
     inventoryItemImage: Locator;
+    inventoryURL: string;
+    cartURL: string;
 
 
     //constructor
     constructor(page: Page) {
         this.page = page;
+        this.inventoryURL = 'https://www.saucedemo.com/inventory.html';
+        this.cartURL = 'https://www.saucedemo.com/cart.html';   
         this.productSort = page.locator('.product_sort_container');
         this.cartLink = page.locator('.shopping_cart_link');
         this.inventoryItem = page.locator('.inventory_item');
