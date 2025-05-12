@@ -14,7 +14,7 @@ let addedItems: string[] = [];
 
 let page: Page;
 
-test.beforeAll(async ({ browser }) => {
+test.beforeEach(async ({ browser }) => {
   page = await browser.newPage();
   loginPage = new LoginPage(page);
   inventoryPage = new InventoryPage(page);
@@ -84,7 +84,7 @@ test('verify checkout-complete page visual', async () => {
 });
 
 
-test.afterAll(async () => {
+test.afterEach(async () => {
   await page.close();
 });
 
